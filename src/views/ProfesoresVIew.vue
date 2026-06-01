@@ -64,6 +64,7 @@
 </template>
 
 <script setup>
+    
 import { reactive, ref } from 'vue'
 import { onMounted } from 'vue'
 import axios from 'axios'
@@ -87,6 +88,8 @@ const fetchProfesores = async () => {
 const editando = ref(null)
 const modalVisible = ref(false)
 const form = ref(formVacio())
+
+
 function formVacio() {
     return { nombre: '', matricula: '', correo: '', telefono: '', }
 }
@@ -105,14 +108,12 @@ function cerrarModal() {
 const guardar = async () => {
     try {
         if (editando.value) {
-            // Petición para actualizar (PUT)
             await axios.put(`http://localhost:3001/profesores/${editando.value.id}`, form.value)
         } else {
-            // Petición para registrar nuevo (POST)
             await axios.post('http://localhost:3001/profesores', form.value)
         }
-        await fetchProfesores() // Refrescar la tabla automáticamente
-        cerrarModal()           // Cerrar el modal limpio
+        await fetchProfesores() 
+        cerrarModal()           
     } catch (error) {
         console.error('Error al guardar el docente:', error)
     }
@@ -122,7 +123,7 @@ const eliminar = async (id) => {
     if (confirm('¿Estás seguro de que deseas eliminar a este profesor?')) {
         try {
             await axios.delete(`http://localhost:3001/profesores/${id}`)
-            await fetchProfesores() // Refrescar la tabla
+            await fetchProfesores()
         } catch (error) {
             console.error('Error al eliminar el docente:', error)
         }

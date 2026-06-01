@@ -11,7 +11,7 @@
                     </div>
 
                     <div class="modal-body p-4">
-                        <slot />
+                        <slot/>
                     </div>
 
                 </div>

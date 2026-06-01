@@ -102,14 +102,12 @@ function cerrarModal() {
 const guardar = async () => {
     try {
         if (editando.value) {
-            // Petición para actualizar (PUT)
             await axios.put(`http://localhost:3001/periodos/${editando.value.id}`, form.value)
         } else {
-            // Petición para registrar nuevo (POST)
             await axios.post('http://localhost:3001/periodos', form.value)
         }
-        await fetchPeriodos() // Refrescar la tabla automáticamente
-        cerrarModal()           // Cerrar el modal limpio
+        await fetchPeriodos() 
+        cerrarModal()           
     } catch (error) {
         console.error('Error al guardar el periodo:', error)
     }
@@ -119,7 +117,7 @@ const eliminar = async (id) => {
     if (confirm('¿Estás seguro de que deseas eliminar a este periodo?')) {
         try {
             await axios.delete(`http://localhost:3001/periodos/${id}`)
-            await fetchPeriodos() // Refrescar la tabla
+            await fetchPeriodos() 
         } catch (error) {
             console.error('Error al eliminar el periodo:', error)
         }

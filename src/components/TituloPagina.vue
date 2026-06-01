@@ -6,7 +6,7 @@
             </div>
         </div>
         <div>
-            <button class="btn btn-success" @click="accion">
+            <button class="btn btn-success" @click="$emit('accion')">
                 <div class="small m-2">
                     + {{ btnLabel }}
                 </div>
@@ -25,19 +25,5 @@ defineProps({
     }
 })
 
-const emit = defineEmits(['accion'])
-
-const accion = () => {
-    emit('accion')
-};
-// export default {
-//   name: 'TituloPagina',
-//   props: {
-//     title:    { type: String, required: true },
-//     subtitle: { type: String, default: '' },
-//     count:    { type: Number, default: null },
-//     btnLabel: { type: String, default: 'Nuevo' }
-//   },
-//   emits: ['accion']
-// }
+defineEmits(['accion'])
 </script>

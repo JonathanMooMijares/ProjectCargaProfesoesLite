@@ -105,14 +105,12 @@ function cerrarModal() {
 const guardar = async () => {
     try {
         if (editando.value) {
-            // Petición para actualizar (PUT)
             await axios.put(`http://localhost:3001/materias/${editando.value.id}`, form.value)
         } else {
-            // Petición para registrar nuevo (POST)
             await axios.post('http://localhost:3001/materias', form.value)
         }
-        await fetchmaterias() // Refrescar la tabla automáticamente
-        cerrarModal()           // Cerrar el modal limpio
+        await fetchmaterias() 
+        cerrarModal()           
     } catch (error) {
         console.error('Error al guardar el materia:', error)
     }
@@ -122,7 +120,7 @@ const eliminar = async (id) => {
     if (confirm('¿Estás seguro de que deseas eliminar a este materia?')) {
         try {
             await axios.delete(`http://localhost:3001/materias/${id}`)
-            await fetchmaterias() // Refrescar la tabla
+            await fetchmaterias()
         } catch (error) {
             console.error('Error al eliminar el materia:', error)
         }

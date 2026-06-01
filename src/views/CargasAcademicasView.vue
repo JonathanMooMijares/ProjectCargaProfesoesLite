@@ -148,14 +148,12 @@ function cerrarModal() {
 const guardar = async () => {
     try {
         if (editando.value) {
-            // Petición para actualizar (PUT)
             await axios.put(`http://localhost:3001/cargas/${editando.value.id}`, form.value)
         } else {
-            // Petición para registrar nuevo (POST)
             await axios.post('http://localhost:3001/cargas', form.value)
         }
-        await cargarInformacion() // Refrescar la tabla automáticamente
-        cerrarModal()           // Cerrar el modal limpio
+        await cargarInformacion() 
+        cerrarModal()          
     } catch (error) {
         console.error('Error al guardar el carga:', error)
     }
@@ -165,7 +163,7 @@ const eliminar = async (id) => {
     if (confirm('¿Estás seguro de que deseas eliminar a este carga?')) {
         try {
             await axios.delete(`http://localhost:3001/cargas/${id}`)
-            await cargarInformacion() // Refrescar la tabla
+            await cargarInformacion() 
         } catch (error) {
             console.error('Error al eliminar el carga:', error)
         }
