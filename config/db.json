@@ -16,7 +16,7 @@
       "nombre": "Agosto - Diciembre 2026",
       "clave": "2026-2",
       "activo": false,
-      "id": "_ZW3jMvht3s"
+      "id": "P9DOoP3"
     }
   ],
   "profesores": [
@@ -79,5 +79,48 @@
       "horasSemana": 6
     }
   ],
-  "$schema": "./node_modules/json-server/schema.json"
+  "cargas": [
+    {
+      "id": 1,
+      "profesorId": "1",
+      "materiaId": 1,
+      "periodoId": 1,
+      "grupo": "A"
+    },
+    {
+      "id": 2,
+      "profesorId": 1,
+      "materiaId": 2,
+      "periodoId": 1,
+      "grupo": "B"
+    },
+    {
+      "id": 3,
+      "profesorId": 2,
+      "materiaId": 3,
+      "periodoId": 1,
+      "grupo": "A"
+    },
+    {
+      "id": 4,
+      "profesorId": 3,
+      "materiaId": 3,
+      "periodoId": 1,
+      "grupo": "B"
+    },
+    {
+      "id": 5,
+      "profesorId": 4,
+      "materiaId": 4,
+      "periodoId": 1,
+      "grupo": "A"
+    },
+    {
+      "profesorId": "3",
+      "materiaId": "1",
+      "periodoId": "2",
+      "grupo": "B",
+      "id": 6
+    }
+  ]
 }
