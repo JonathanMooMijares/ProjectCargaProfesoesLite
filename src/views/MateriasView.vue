@@ -88,7 +88,7 @@ const editando = ref(null)
 const modalVisible = ref(false)
 const form = ref(formVacio())
 function formVacio() {
-    return { nombre: '', matricula: '', correo: '', telefono: '', }
+    return { nombre: '', clave: '', creditos: '', horasSemana: '' }
 }
 
 function abrirModal(materia = null) {
