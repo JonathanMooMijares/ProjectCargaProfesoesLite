@@ -1,6 +1,6 @@
 <template>
     <section>
-        <TituloPagina title="Materias" btnLabel="Agregar materias" @accion="abrirModal()" />
+        <TituloPagina title="Periodos" btnLabel="Agregar Periodos" @accion="abrirModal()" />
     </section>
     <section>
         <div class="table-responsive">
@@ -15,15 +15,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="materia in state.materias" :key="materia.id">
-                        <td>{{ materia.nombre }}</td>
-                        <td>{{ materia.clave }}</td>
-                        <td>{{ materia.creditos }}</td>
-                        <td>{{ materia.horasSemana }}</td>
+                    <tr v-for="periodo in state.Periodos" :key="periodo.id">
+                        <td>{{ periodo.nombre }}</td>
+                        <td>{{ periodo.clave }}</td>
+                        <td>{{ periodo.creditos }}</td>
+                        <td>{{ periodo.horasSemana }}</td>
                         <td>
                             <div class="justify-content-between d-flex gap-2">
-                                <button class="btn btn-primary" @click="abrirModal(materia)">Editar</button>
-                                <button class="btn btn-danger" @click="eliminar(materia.id)">Eliminar</button>
+                                <button class="btn btn-primary" @click="abrirModal(periodo)">Editar</button>
+                                <button class="btn btn-danger" @click="eliminar(periodo.id)">Eliminar</button>
                             </div>
                         </td>
                     </tr>
@@ -32,7 +32,7 @@
         </div>
     </section>
 
-    <ModalForm :title="editando ? 'Editar Materia' : 'Nueva Materia'" :show="modalVisible" @close="cerrarModal">
+    <ModalForm :title="editando ? 'Editar periodo' : 'Nueva periodo'" :show="modalVisible" @close="cerrarModal">
         <form @submit.prevent="guardar">
             <div class="fg mb-3">
                 <label class="form-label">Nombre</label>
@@ -54,7 +54,7 @@
             <div class="d-flex justify-content-end gap-2 mt-4">
                 <button type="button" class="btn btn-secondary" @click="cerrarModal">Cancelar</button>
                 <button type="submit" class="btn btn-primary">
-                    {{ editando ? 'Guardar cambios' : 'Registrar materia' }}
+                    {{ editando ? 'Guardar cambios' : 'Registrar periodo' }}
                 </button>
             </div>
         </form>
@@ -71,14 +71,14 @@ import TituloPagina from '@/components/TituloPagina.vue';
 import ModalForm from '@/components/FormularioModal.vue';
 
 const state = reactive({
-    materias: []
+    Periodos: []
 })
 
-const fetchmaterias = async () => {
+const fetchPeriodos = async () => {
     try {
-        const response = await axios.get('http://localhost:3001/materias')
-        state.materias = response.data
-        console.log(state.materias)
+        const response = await axios.get('http://localhost:3001/Periodos')
+        state.Periodos = response.data
+        console.log(state.Periodos)
     } catch (error) {
         console.error(error)
     }
@@ -91,9 +91,9 @@ function formVacio() {
     return { nombre: '', matricula: '', correo: '', telefono: '', }
 }
 
-function abrirModal(materia = null) {
-    editando.value = materia
-    form.value = materia ? { ...materia } : formVacio()
+function abrirModal(periodo = null) {
+    editando.value = periodo
+    form.value = periodo ? { ...periodo } : formVacio()
     modalVisible.value = true
 }
 function cerrarModal() {
@@ -106,31 +106,31 @@ const guardar = async () => {
     try {
         if (editando.value) {
             // Petición para actualizar (PUT)
-            await axios.put(`http://localhost:3001/materias/${editando.value.id}`, form.value)
+            await axios.put(`http://localhost:3001/Periodos/${editando.value.id}`, form.value)
         } else {
             // Petición para registrar nuevo (POST)
-            await axios.post('http://localhost:3001/materias', form.value)
+            await axios.post('http://localhost:3001/Periodos', form.value)
         }
-        await fetchmaterias() // Refrescar la tabla automáticamente
+        await fetchPeriodos() // Refrescar la tabla automáticamente
         cerrarModal()           // Cerrar el modal limpio
     } catch (error) {
-        console.error('Error al guardar el materia:', error)
+        console.error('Error al guardar el periodo:', error)
     }
 }
 
 const eliminar = async (id) => {
-    if (confirm('¿Estás seguro de que deseas eliminar a este materia?')) {
+    if (confirm('¿Estás seguro de que deseas eliminar a este periodo?')) {
         try {
-            await axios.delete(`http://localhost:3001/materias/${id}`)
-            await fetchmaterias() // Refrescar la tabla
+            await axios.delete(`http://localhost:3001/Periodos/${id}`)
+            await fetchPeriodos() // Refrescar la tabla
         } catch (error) {
-            console.error('Error al eliminar el materia:', error)
+            console.error('Error al eliminar el periodo:', error)
         }
     }
 }
 
 onMounted(() => {
-    fetchmaterias()
+    fetchPeriodos()
 })
 
 </script>
