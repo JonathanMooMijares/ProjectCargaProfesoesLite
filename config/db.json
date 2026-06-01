@@ -1,76 +1,77 @@
 {
-    "periodos": [
-        {
-            "id": 1,
-            "nombre": "Agosto – Diciembre 2025",
-            "clave": "2025-2",
-            "activo": false
-        },
-        {
-            "id": 2,
-            "nombre": "Enero – Junio 2026",
-            "clave": "2026-1",
-            "activo": true
-        }
-    ],
-    "profesores": [
-        {
-            "id": 1,
-            "nombre": "Mtro. Ramón Hernández",
-            "matricula": "2021-001",
-            "correo": "rmhdz@upnqr.edu.mx",
-            "telefono": 9831096666
-        },
-        {
-            "id": 2,
-            "nombre": "Dra. Harlen Tzuc",
-            "matricula": "2022-015",
-            "correo": "htzuc@upnqr.edu.mx",
-            "telefono": 9831384480
-        },
-        {
-            "id": 3,
-            "nombre": "Mtra. Dalia Flores",
-            "matricula": "2020-043",
-            "correo": "dflores@upnqr.edu.mx",
-            "telefono": 9831125308
-        }
-    ],
-    "materias": [
-        {
-            "id": 1,
-            "nombre": "Elementos Básicos de Investigación Cuantitativa",
-            "clave": "1961",
-            "creditos": 10,
-            "horasSemana": 6
-        },
-        {
-            "id": 2,
-            "nombre": "Introducción a la Epistemología",
-            "clave": "1962",
-            "creditos": 8,
-            "horasSemana": 4
-        },
-        {
-            "id": 3,
-            "nombre": "Problemas Sociales Contemporáneos",
-            "clave": "1963",
-            "creditos": 8,
-            "horasSemana": 4
-        },
-        {
-            "id": 4,
-            "nombre": "Cultura e Identidad",
-            "clave": "1964",
-            "creditos": 8,
-            "horasSemana": 4
-        },
-        {
-            "id": 5,
-            "nombre": "Desarrollo Regional y Microhistoria",
-            "clave": "1965",
-            "creditos": 10,
-            "horasSemana": 6
-        }
-    ]
+  "periodos": [
+    {
+      "id": "1",
+      "nombre": "Agosto – Diciembre 2025",
+      "clave": "2025-2",
+      "activo": false
+    },
+    {
+      "id": "2",
+      "nombre": "Enero – Junio 2026",
+      "clave": "2026-1",
+      "activo": true
+    }
+  ],
+  "profesores": [
+    {
+      "id": "1",
+      "nombre": "Mtro. Ramón Hernández",
+      "matricula": "2021-001",
+      "correo": "rmhdz@upnqr.edu.mx",
+      "telefono": 9831096666
+    },
+    {
+      "id": "2",
+      "nombre": "Dra. Harlen Tzuc",
+      "matricula": "2022-015",
+      "correo": "htzuc@upnqr.edu.mx",
+      "telefono": 9831384480
+    },
+    {
+      "id": "3",
+      "nombre": "Mtra. Dalia Flores",
+      "matricula": "2020-043",
+      "correo": "dflores@upnqr.edu.mx",
+      "telefono": 9831125308
+    }
+  ],
+  "materias": [
+    {
+      "id": "1",
+      "nombre": "Elementos Básicos de Investigación Cuantitativa",
+      "clave": "1961",
+      "creditos": 10,
+      "horasSemana": 6
+    },
+    {
+      "id": "2",
+      "nombre": "Introducción a la Epistemología",
+      "clave": "1962",
+      "creditos": 8,
+      "horasSemana": 4
+    },
+    {
+      "id": "3",
+      "nombre": "Problemas Sociales Contemporáneos",
+      "clave": "1963",
+      "creditos": 8,
+      "horasSemana": 4
+    },
+    {
+      "id": "4",
+      "nombre": "Cultura e Identidad",
+      "clave": "1964",
+      "creditos": 8,
+      "horasSemana": 4
+    },
+    {
+      "id": "5",
+      "nombre": "Desarrollo Regional y Microhistoria",
+      "clave": "1965",
+      "creditos": 10,
+      "horasSemana": 6
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

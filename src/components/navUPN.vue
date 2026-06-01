@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
+
 defineProps({
     navElementos: {
         type: Object,

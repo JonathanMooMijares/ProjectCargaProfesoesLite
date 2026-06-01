@@ -1,6 +1,6 @@
 <script setup>
-import HeaderUPN from './components/headerUPN.vue'
-import NavUPN from './components/navUPN.vue'
+import HeaderUPN from '@/components/headerUPN.vue'
+import NavUPN from '@/components/navUPN.vue'
 
 const enlacesCE = {
   profesores: {
