@@ -1,4 +1,4 @@
-<template>     
+<template>
     <RouterLink class="nav-link active" :to="navElementos.ruta">{{ navElementos.titulo }}</RouterLink>
 </template>
 
@@ -18,6 +18,14 @@ defineProps({
 }
 
 .nav-link:hover {
+    color: #dcdcdc;
+}
+
+.nav-link.active {
+    color: #FFF;
+}
+
+.nav-link.active:hover {
     color: #dcdcdc;
 }
 </style>

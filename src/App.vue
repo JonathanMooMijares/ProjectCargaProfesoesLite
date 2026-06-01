@@ -20,8 +20,8 @@ const enlacesCE = {
     ruta: '/cargas'
   },
   salida: {
-    titulo: 'Cerrar Sesión',
-    ruta: '/salida'
+    titulo: 'Regresar',
+    ruta: '/'
   }
 }
 
