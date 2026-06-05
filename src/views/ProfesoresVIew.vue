@@ -32,7 +32,7 @@
         </div>
     </section>
 
-    <ModalForm :title="editando ? 'Editar Docente' : 'Nuevo Docente'" :show="modalVisible" @close="cerrarModal">
+    <FormularioModal :title="editando ? 'Editar Docente' : 'Nuevo Docente'" :show="modalVisible" @close="cerrarModal">
         <form @submit.prevent="guardar">
             <div class="fg mb-3">
                 <label class="form-label">Nombre completo</label>
@@ -58,7 +58,7 @@
                 </button>
             </div>
         </form>
-    </ModalForm>
+    </FormularioModal>
 
 
 </template>
@@ -69,7 +69,7 @@ import { reactive, ref } from 'vue'
 import { onMounted } from 'vue'
 import axios from 'axios'
 import TituloPagina from '@/components/TituloPagina.vue';
-import ModalForm from '@/components/FormularioModal.vue';
+import FormularioModal from '@/components/FormularioModal.vue';
 
 const state = reactive({
     profesores: []
@@ -85,8 +85,9 @@ const fetchProfesores = async () => {
     }
 }
 
+// variables reactivas
 const editando = ref(null)
-const modalVisible = ref(false)
+const modalVisible = ref(false) 
 const form = ref(formVacio())
 
 
@@ -129,7 +130,6 @@ const eliminar = async (id) => {
         }
     }
 }
-
 onMounted(() => {
     fetchProfesores()
 })

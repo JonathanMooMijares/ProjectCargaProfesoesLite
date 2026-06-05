@@ -32,7 +32,7 @@
         </div>
     </section>
 
-    <ModalForm :title="editando ? 'Editar Materia' : 'Nueva Materia'" :show="modalVisible" @close="cerrarModal">
+    <FormularioModal :title="editando ? 'Editar Materia' : 'Nueva Materia'" :show="modalVisible" @close="cerrarModal">
         <form @submit.prevent="guardar">
             <div class="fg mb-3">
                 <label class="form-label">Nombre</label>
@@ -58,7 +58,7 @@
                 </button>
             </div>
         </form>
-    </ModalForm>
+    </FormularioModal>
 
 
 </template>
@@ -68,7 +68,7 @@ import { reactive, ref } from 'vue'
 import { onMounted } from 'vue'
 import axios from 'axios'
 import TituloPagina from '@/components/TituloPagina.vue';
-import ModalForm from '@/components/FormularioModal.vue';
+import FormularioModal from '@/components/FormularioModal.vue';
 
 const state = reactive({
     materias: []

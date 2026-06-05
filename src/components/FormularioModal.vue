@@ -1,7 +1,6 @@
 <template>
-    <transition name="fade">
         <div v-if="show" class="modal d-block" tabindex="-1"
-            style="background-color: rgba(0, 0, 0, 0.5); backdrop-filter: blur(2px);" @click.self="$emit('close')">
+            style="background-color: rgba(0, 0, 0, 0.5); backdrop-filter: blur(2px);">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content shadow-lg border-0">
 
@@ -13,11 +12,9 @@
                     <div class="modal-body p-4">
                         <slot/>
                     </div>
-
                 </div>
             </div>
         </div>
-    </transition>
 </template>
 
 <script setup>

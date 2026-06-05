@@ -110,7 +110,7 @@
     },
     {
       "id": 5,
-      "profesorId": 4,
+      "profesorId": "1",
       "materiaId": 4,
       "periodoId": 1,
       "grupo": "A"
@@ -121,6 +121,13 @@
       "periodoId": "2",
       "grupo": "A",
       "id": 6
+    },
+    {
+      "profesorId": "3",
+      "materiaId": "2",
+      "periodoId": "1",
+      "grupo": "12",
+      "id": 7
     }
   ]
 }

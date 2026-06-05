@@ -32,9 +32,9 @@
         </div>
     </section>
 
-    <ModalForm :title="editando ? 'Editar Carga' : 'Nueva Carga'" :show="modalVisible" @close="cerrarModal">
+    <FormularioModal :title="editando ? 'Editar Carga' : 'Nueva Carga'" :show="modalVisible" @close="cerrarModal">
         <form @submit.prevent="guardar">
-            
+
             <div class="mb-3">
                 <label class="form-label">Profesor</label>
                 <select v-model="form.profesorId" class="form-select" required>
@@ -77,7 +77,7 @@
                 </button>
             </div>
         </form>
-    </ModalForm>
+    </FormularioModal>
 
 
 </template>
@@ -87,7 +87,7 @@ import { reactive, ref } from 'vue'
 import { onMounted } from 'vue'
 import axios from 'axios'
 import TituloPagina from '@/components/TituloPagina.vue';
-import ModalForm from '@/components/FormularioModal.vue';
+import FormularioModal from '@/components/FormularioModal.vue';
 
 const state = reactive({
     cargas: [],
@@ -98,12 +98,12 @@ const state = reactive({
 
 const cargarInformacion = async () => {
     try {
-        const [cargasRes, profesoresRes, materiasRes, periodosRes] = await Promise.all([
-            axios.get('http://localhost:3001/cargas'),
-            axios.get('http://localhost:3001/profesores'),
-            axios.get('http://localhost:3001/materias'),
-            axios.get('http://localhost:3001/periodos')
-        ])
+        const cargasRes = await axios.get('http://localhost:3001/cargas')
+
+        const profesoresRes = await axios.get('http://localhost:3001/profesores')
+        const materiasRes = await axios.get('http://localhost:3001/materias')
+        const periodosRes = await axios.get('http://localhost:3001/periodos')
+
         state.cargas = cargasRes.data
         state.profesores = profesoresRes.data
         state.materias = materiasRes.data
@@ -113,16 +113,16 @@ const cargarInformacion = async () => {
     }
 }
 
-const obtenerNombreProfesor = (id) => {
-    const profesor = state.profesores.find(p => String(p.id) === String(id))
+const obtenerNombreProfesor = (idProfesor) => {
+    const profesor = state.profesores.find(profesor => String(profesor.id) === String(idProfesor))
     return profesor ? profesor.nombre : 'No asignado'
-}   
-const obtenerNombreMateria = (id) => {
-    const materia = state.materias.find(m => String(m.id) === String(id))
+}
+const obtenerNombreMateria = (idMateria) => {
+    const materia = state.materias.find(materia => String(materia.id) === String(idMateria))
     return materia ? materia.nombre : 'Desconocida'
 }
-const obtenerNombrePeriodo = (id) => {
-    const periodo = state.periodos.find(p => String(p.id) === String(id))
+const obtenerNombrePeriodo = (idPeriodo) => {
+    const periodo = state.periodos.find(periodo => String(periodo.id) === String(idPeriodo))
     return periodo ? periodo.nombre : 'N/A'
 }
 
@@ -152,8 +152,8 @@ const guardar = async () => {
         } else {
             await axios.post('http://localhost:3001/cargas', form.value)
         }
-        await cargarInformacion() 
-        cerrarModal()          
+        await cargarInformacion()
+        cerrarModal()
     } catch (error) {
         console.error('Error al guardar el carga:', error)
     }
@@ -163,7 +163,7 @@ const eliminar = async (id) => {
     if (confirm('¿Estás seguro de que deseas eliminar a este carga?')) {
         try {
             await axios.delete(`http://localhost:3001/cargas/${id}`)
-            await cargarInformacion() 
+            await cargarInformacion()
         } catch (error) {
             console.error('Error al eliminar el carga:', error)
         }
